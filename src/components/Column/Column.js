@@ -1,26 +1,31 @@
 import styles from './Column.module.scss';
 import CardForm from '../CardForm/CardForm';
-import List from '../List/List';
 import Card from '../Card/Card';
-
-
+import { useSelector } from 'react-redux';
 
 const Column = (props) => {
+  const cards = useSelector((state) =>
+    state.cards.filter((card) => card.columnId === props.id)
+  );
+
   return (
-   
-  <article className={styles.column}>
-    
-    <h2 className={styles.title}>
-    <span className={styles.icon + ' fa fa-' + props.icon} />
-      {props.title}
+    <article className={styles.column}>
+      <h2 className={styles.title}>
+        <span className={styles.icon + ' fa fa-' + props.icon} />
+        {props.title}
       </h2>
       <ul className={styles.cards}>
-	{props.cards.map(card => <Card key={card.id} title={card.title} />)}
-</ul>
-<CardForm  columnId={props.id} action={props.columnId} addCard={props.addCard}  />
-      </article>
-  
-  )};
-  
+        {cards.map((card) => (
+          <Card key={card.id} {...card} />
+        ))}
+      </ul>
+      <CardForm
+        columnId={props.id}
+        action={props.columnId}
+        addCard={props.addCard}
+      />
+    </article>
+  );
+};
 
 export default Column;
