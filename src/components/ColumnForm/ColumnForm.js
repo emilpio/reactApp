@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Button from '../Button/Button.js';
 import { useDispatch } from 'react-redux';
 
-const ColumnForm = (props) => {
+const ColumnForm = () => {
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState('');

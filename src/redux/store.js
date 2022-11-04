@@ -14,6 +14,11 @@ const reducer = (state, action) => {
         ...state,
         cards: [...state.cards, { ...action.payload, id: shortid() }],
       };
+    // case 'UPDATE_SEARCHSTRING':
+    //   return {
+    //     ...state,
+    //     searchString: [...state.searchString], //tu zapewne
+    //   };
     default:
       return state;
   }
