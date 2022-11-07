@@ -1,0 +1,32 @@
+@import '../../styles/settings.scss';
+
+.nav {
+  width: 100vw;
+  text-align: right;
+  font-size: larger;
+  list-style-type: none;
+  background-color: darken($color-dark, 3%);
+  margin-left: calc(-1 * ((100vw - 100%) / 2));
+  padding: 5px 0 5px;
+  margin-top: -20px;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 20px auto;
+  text-align: right;
+}
+
+
+
+ul li {
+  max-width: 1200px;
+  display: inline;
+  padding: 0 10px;
+}
+
+ul li :first-child {
+
+  float: left;
+  padding-top: 1px;
+}
