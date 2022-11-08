@@ -4,15 +4,18 @@ import Button from '../Button/Button.js';
 import { useDispatch } from 'react-redux';
 import { addColumn } from '../../redux/store';
 
-const ColumnForm = () => {
+const ColumnForm = (props) => {
   const dispatch = useDispatch();
+
+  const listId = props.Id;
+  // console.log(props.listId);
 
   const [title, setTitle] = useState('');
   const [icon, setIcon] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addColumn({ title, icon }));
+    dispatch(addColumn({ title, icon, listId }));
     setTitle('');
     setIcon('');
   };

@@ -3,20 +3,16 @@ import initialState from './initialState';
 import shortid from 'shortid';
 
 //selectors
-// export const getFilteredCards = (state, columnId) =>
-//   state.cards.filter(
-//     (card) =>
-//       card.columnId === columnId &&
-//       card.title.toLowerCase().includes(state.searchString.toLowerCase())
-//   );
 
-// action creators
-export const addColumn = (payload) => ({ type: 'ADD_COLUMN', payload });
-export const addCard = (payload) => ({ type: 'ADD_CARD', payload });
-export const updateSearchString = (payload) => ({
-  type: 'UPDATE_SEARCHSTRING',
-  payload,
-});
+export const getAllLists = (state) => state.lists;
+
+export const getListById = ({ lists }, listId) =>
+  lists.find((list) => list.id === listId);
+
+export const getColumnsByList = ({ columns }, listId) =>
+  columns.filter((column) => column.listId === listId);
+
+export const getAllColumns = (state) => state.columns;
 
 export const getFilteredCards = ({ cards, searchString }, columnId) =>
   cards.filter(
@@ -25,7 +21,13 @@ export const getFilteredCards = ({ cards, searchString }, columnId) =>
       card.title.toLowerCase().includes(searchString.toLowerCase())
   );
 
-export const getAllColumns = ({ columns }) => columns.map((column) => column);
+// action creators
+export const addColumn = (payload) => ({ type: 'ADD_COLUMN', payload });
+export const addCard = (payload) => ({ type: 'ADD_CARD', payload });
+export const updateSearchString = (payload) => ({
+  type: 'UPDATE_SEARCHSTRING',
+  payload,
+});
 
 const reducer = (state, action) => {
   switch (action.type) {
