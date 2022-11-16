@@ -2,17 +2,21 @@ import styles from './List.module.scss';
 import Column from '../Column/Column.js';
 import ColumnForm from '../ColumnForm/ColumnForm';
 import { useSelector } from 'react-redux';
-import { getListById, getColumnsByList } from '../../redux/store';
+import { getListById } from '../../redux/listsReducer';
+import { getColumnsByList } from '../../redux/columnsReducer';
 import { useParams, Navigate } from 'react-router';
 import SearchForm from '../SearchForm/SearchForm';
 
 const List = () => {
   const { listId } = useParams();
-  // console.log(listId);
+
+  console.log(listId, 'listid');
   const columns = useSelector((state) => getColumnsByList(state, listId));
+  console.log(columns, 'columns');
 
   const listData = useSelector((state) => getListById(state, listId));
   if (!listData) return <Navigate to='/' />;
+  console.log(listData, 'listdata');
 
   return (
     <div className={styles.list}>

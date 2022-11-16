@@ -1,11 +1,12 @@
-import { getAllLists } from '../../redux/store';
 import styles from './Lists.module.scss';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ListForm from '../ListForm/ListForm';
+import { getAllLists } from '../../redux/listsReducer';
 
 const Lists = (props) => {
   const lists = useSelector(getAllLists);
+  // console.log(lists, 'lists');
 
   return (
     <section className={styles.lists}>
@@ -14,6 +15,7 @@ const Lists = (props) => {
         <Link key={list.id} to={'list/' + list.id} className={styles.listLink}>
           <h3>{list.title}</h3>
           <p>{list.description}</p>
+          <p>{list.test}</p>
         </Link>
       ))}
       <ListForm />
