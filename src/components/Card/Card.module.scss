@@ -28,6 +28,15 @@
     background-color: inherit;
 }
 
+.remove_button:focus {
+    color: gray;
+}
+
+// .remove_button:focus {
+//     background-color: yellow;
+// }
+
+
 .active {
     color: $color-warning;
 }

@@ -24,7 +24,7 @@ const Card = ({ id, title, isFavorite }) => {
         </button>
         <button
           onClick={remove}
-          className={clsx(styles.star_button, styles.active)}>
+          className={clsx(styles.remove_button, isFavorite && styles.active)}>
           <span className='fa fa-trash' />
         </button>
       </div>
